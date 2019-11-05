@@ -37,39 +37,53 @@
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
-      <% var defaultBg = '#4d4d4d'; %>
-<div class="overlay" style="background: <%= theme.style && theme.style.header ? theme.style.header : defaultBg %>"></div>
+      
+<div class="overlay" style="background: #4d4d4d"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<a href="<%=theme.root%>" class="profilepic">
-			<img src="<%=theme.avatar%>" class="js-avatar">
+		<a href="https://blackcatll.github.io" target="_blank" rel="noopener" class="profilepic">
+			<img src="/img/dio.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="<%=theme.root%>"><%=theme.author%></a></h1>
+		  <h1 class="header-author"><a href="https://blackcatll.github.io" target="_blank" rel="noopener">BlackCat</a></h1>
 		</hgroup>
-		<% if (theme.subtitle){ %>
-		<p class="header-subtitle"><%=theme.subtitle%></p>
-		<%}%>
+		
 
 		<nav class="header-menu">
 			<ul>
-			<% for (var i in theme.menu){ %>
-				<li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
-	        <%}%>
+			
+				<li><a href="https://blackcatll.github.io/" target="_blank" rel="noopener">主页</a></li>
+	        
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
-    		<% for (var i in theme.smart_menu){ %>
-    			<% if(theme.smart_menu[i]){ %>
-    			<a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)" target="_blank" rel="noopener"><%= theme.smart_menu[i] %></a>
-    			<% } %>
-            <%}%>
+    		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)" target="_blank" rel="noopener">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)" target="_blank" rel="noopener">友链</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)" target="_blank" rel="noopener">关于我</a>
+    			
+            
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
-				<% for (var i in theme.subnav){ %>
-					<a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"><i class="icon-<%= i %>"></i></a>
-		        <%}%>
+				
+					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+		        
+					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+		        
 			</div>
 		</nav>
 	</header>		
@@ -157,8 +171,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##成员变量传入方法内的及输出的两种情况</p>
-<p>测试代码如下: </p>
+        <h2 id="成员变量传入方法内的及输出的两种情况"><a href="#成员变量传入方法内的及输出的两种情况" class="headerlink" title="成员变量传入方法内的及输出的两种情况"></a>成员变量传入方法内的及输出的两种情况</h2><p>测试代码如下: </p>
 <img src="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/code.png" class="">
 
 <p>因为x的数据类型为float，所以执行f2方法输出的结果为10.0很容易理解，但是为什么执行f1方法的输出结果不是55.0,</p>
@@ -169,8 +182,7 @@
 <p>（4）压栈参数并修改为55.0   - - &gt; （5）退出f1方法，并弹出f1方法及其作用域中的数据    - - &gt;  （6）退出main方法 </p>
 <p>通过以上压栈出栈顺序可以知道成员变量x在进入f1方法后的确经过修改变成了55.0，但出栈时由于基础数据类型存储在栈中，</p>
 <p>所以输出的是先进后出的变量初始所在栈位置的值4.0。而f2方法由于是对对象进行操作，所以输出的是修改后的值。</p>
-<p>##那么如果传入方法的是数组呢？</p>
-<p>测试代码如下： </p>
+<h2 id="那么如果传入方法的是数组呢？"><a href="#那么如果传入方法的是数组呢？" class="headerlink" title="那么如果传入方法的是数组呢？"></a>那么如果传入方法的是数组呢？</h2><p>测试代码如下： </p>
 <img src="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/code01.png" class="">
 
 <p>如结果显示为什么当传入的成员参数为数组时为什么输出的结果又是方法执行之后的呢？</p>
@@ -179,15 +191,13 @@
 <p>通过栈中存放的位置索引找到这个变量在堆内存中的位置，然后进行修改操作。即transpose方法不是将数组重新压到栈中再修</p>
 <p>改，而是直接在堆中修改，修改完后退出方法，所以输出的是修改之后的值。</p>
 <p>但是不是所有的引用类型变量都是如此，还有一个特例，那就是String。</p>
-<p>##当传人参数为String时：</p>
-<p>测试代码如下：</p>
+<h2 id="当传人参数为String时："><a href="#当传人参数为String时：" class="headerlink" title="当传人参数为String时："></a>当传人参数为String时：</h2><p>测试代码如下：</p>
 <img src="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/code02.png" class="">
 
 <p>如结果所示在方法执行时str数组的确变成了大写，即”HELLO”，但是在执行完方法后的输出时str又变回了小写,即”hello”。</p>
 <p>其原因是Sting类的存储是通过char[]来实现的，类似于Integer是int的包装类，Float是float的包装类，对包装类的操作实质</p>
 <p>上是对基本数据类型的操作，因此Sting类就像包装类一样，体现出基本数据类型的特征，即退出方法后字符串并没有变化。</p>
-<p>##结语</p>
-<p>基本数据类型和底层通过基本数据类型实现的String在压栈时方法中修改值时，出栈时值不会改变还是变量初始所在栈位置</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>基本数据类型和底层通过基本数据类型实现的String在压栈时方法中修改值时，出栈时值不会改变还是变量初始所在栈位置</p>
 <p>的值。而引用数据类型和对象是在堆内存中进行操作所以修改后退出方法输出的值是修改之后的值。</p>
 
       
