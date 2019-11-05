@@ -12,16 +12,16 @@
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈java中的Integer和int，以及==和equal的关系">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;index.html">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A==%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;index.html">
 <meta property="og:site_name" content="BlacakCat的个人博客">
 <meta property="og:description" content="从一个Integer和Int的例子开始：​    首先看如下的测试代码及输出结果：   ​    为什么 i == j 的输出结果为 false 而 i.equals(j) 的结果为 true ? ​    首先需要解释下java中的 == 与 equals 之间的区别。当使用 == 比较时，判断的是两个对象的地址是不是相等， 即判断两个对象是不是同一个对象（基本数据类型比较的是值，引用数据类型比">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;Integer%E5%8F%8Aint%E7%9A%84%E6%AF%94%E8%BE%83_code01.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;jdk_valueOf.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;Integer_valueOf_code.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A==%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;Integer%E5%8F%8Aint%E7%9A%84%E6%AF%94%E8%BE%83_code01.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A==%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;jdk_valueOf.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A==%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;Integer_valueOf_code.png">
 <meta property="og:updated_time" content="2019-11-05T10:24:13.542Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;Integer%E5%8F%8Aint%E7%9A%84%E6%AF%94%E8%BE%83_code01.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A==%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;Integer%E5%8F%8Aint%E7%9A%84%E6%AF%94%E8%BE%83_code01.png">
   
     <link rel="alternative" href="/atom.xml" title="BlacakCat的个人博客" type="application/atom+xml">
   
@@ -157,7 +157,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-浅谈java中的Integer和int，以及-和equal的关系" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-浅谈java中的Integer和int，以及==和equal的关系" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -169,7 +169,7 @@
   
 
         
-        <a href="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/" class="archive-article-date">
+        <a href="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A==%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/" class="archive-article-date">
   	<time datetime="2019-11-05T08:40:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
 </a>
         
@@ -178,7 +178,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="从一个Integer和Int的例子开始："><a href="#从一个Integer和Int的例子开始：" class="headerlink" title="从一个Integer和Int的例子开始："></a>从一个Integer和Int的例子开始：</h2><p>​    首先看如下的测试代码及输出结果：</p>
-<img src="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/Integer%E5%8F%8Aint%E7%9A%84%E6%AF%94%E8%BE%83_code01.png" class="">
+<img src="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A==%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/Integer%E5%8F%8Aint%E7%9A%84%E6%AF%94%E8%BE%83_code01.png" class="">
 
 <p>​    为什么 i == j 的输出结果为 false 而 i.equals(j) 的结果为 true ?</p>
 <p>​    首先需要解释下java中的 == 与 equals 之间的区别。当使用 == 比较时，判断的是两个对象的地址是不是相等，</p>
@@ -204,9 +204,9 @@
 <p>的比较，即比较它们的值。</p>
 <p>​    那么 l == m 的比较结果为什么输出结果为 false 呢？其中又涉及到了 java 缓存的方面的内容，因为 Integer l = 128</p>
 <p>在编译时，会翻译为 Integer l = Integer.valueOf(128)。我们可以通过jdk查看对 valueOf 的定义：</p>
-<p>​    <img src="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/jdk_valueOf.png" class=""></p>
+<p>​    <img src="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A==%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/jdk_valueOf.png" class=""></p>
 <p>​    同时可以查看java对于Integer类型的 valueOf 的定义：</p>
-<p>​    <img src="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/Integer_valueOf_code.png" class=""></p>
+<p>​    <img src="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A==%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/Integer_valueOf_code.png" class=""></p>
 <p>​    通过以上信息可以知道 java 对于-128 到 127之间的数会进行缓存而产生更好的空间和时间性能，即 Integer i = 127 时，会</p>
 <p>将127进行缓存，下次再写Integer j = 127时，就会直接从缓存中取，就不会new了。而超出这个范围时就不能从缓存中获取，</p>
 <p>需要重新 new ，所以 l 和 m 通过 == 比较时所获得的结果为 false。而当 l 与 n 通过 == 比较时，java会对 l 进行自动拆箱，</p>
@@ -283,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A==%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/" alt="微信分享二维码">
     </div>
 </div>
 
