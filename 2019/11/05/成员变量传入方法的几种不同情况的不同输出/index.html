@@ -6,16 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>BlacakCat的个人博客</title>
+  <title>成员变量传入方法的几种不同情况的不同输出 | BlacakCat的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="写一些 Java 相关的文字">
-<meta property="og:type" content="website">
-<meta property="og:title" content="BlacakCat的个人博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+  <meta name="description" content="成员变量传入方法内的及输出的两种情况测试代码如下:    因为x的数据类型为float，所以执行f2方法输出的结果为10.0很容易理解，但是为什么执行f1方法的输出结果不是55.0, 而是x的初始值4.0呢？ ##类执行时的压栈与出栈 在java类执行时，基本数据类型变量是存放在栈中的。栈是遵循先进后出，后进先出的原则，所以在类执行时经过以下顺序： （1）main方法压栈         - -">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="成员变量传入方法的几种不同情况的不同输出">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA&#x2F;index.html">
 <meta property="og:site_name" content="BlacakCat的个人博客">
-<meta property="og:description" content="写一些 Java 相关的文字">
+<meta property="og:description" content="成员变量传入方法内的及输出的两种情况测试代码如下:    因为x的数据类型为float，所以执行f2方法输出的结果为10.0很容易理解，但是为什么执行f1方法的输出结果不是55.0, 而是x的初始值4.0呢？ ##类执行时的压栈与出栈 在java类执行时，基本数据类型变量是存放在栈中的。栈是遵循先进后出，后进先出的原则，所以在类执行时经过以下顺序： （1）main方法压栈         - -">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA&#x2F;code.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA&#x2F;code01.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA&#x2F;code02.png">
+<meta property="og:updated_time" content="2019-11-05T14:29:44.937Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA&#x2F;code.png">
   
     <link rel="alternative" href="/atom.xml" title="BlacakCat的个人博客" type="application/atom+xml">
   
@@ -155,16 +161,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-成员变量传入方法的几种不同情况的不同输出" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-成员变量传入方法的几种不同情况的不同输出" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/">成员变量传入方法的几种不同情况的不同输出</a>
+    <h1 class="article-title" itemprop="name">
+      成员变量传入方法的几种不同情况的不同输出
     </h1>
   
 
@@ -188,9 +192,26 @@
 <p>（4）压栈参数并修改为55.0   - - &gt; （5）退出f1方法，并弹出f1方法及其作用域中的数据    - - &gt;  （6）退出main方法 </p>
 <p>通过以上压栈出栈顺序可以知道成员变量x在进入f1方法后的确经过修改变成了55.0，但出栈时由于基础数据类型存储在栈中，</p>
 <p>所以输出的是先进后出的变量初始所在栈位置的值4.0。而f2方法由于是对对象进行操作，所以输出的是修改后的值。</p>
-        
-          <a class="article-more-a" href="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/#more">more >></a>
-        
+<a id="more"></a>
+
+<h2 id="那么如果传入方法的是数组呢？"><a href="#那么如果传入方法的是数组呢？" class="headerlink" title="那么如果传入方法的是数组呢？"></a>那么如果传入方法的是数组呢？</h2><p>测试代码如下： </p>
+<img src="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/code01.png" class="">
+
+<p>如结果显示为什么当传入的成员参数为数组时为什么输出的结果又是方法执行之后的呢？</p>
+<p>在java中，数组属于引用类型变量，即可以看做是一个对象，在创建一个数组时，和创建一个新的对象一样的道理。这个对象</p>
+<p>存放在堆内存中，栈内存只是存放了它的位置索引（即在堆内存中的位置）。这样在transpose方法中引用了数组变量，同样是</p>
+<p>通过栈中存放的位置索引找到这个变量在堆内存中的位置，然后进行修改操作。即transpose方法不是将数组重新压到栈中再修</p>
+<p>改，而是直接在堆中修改，修改完后退出方法，所以输出的是修改之后的值。</p>
+<p>但是不是所有的引用类型变量都是如此，还有一个特例，那就是String。</p>
+<h2 id="当传人参数为String时："><a href="#当传人参数为String时：" class="headerlink" title="当传人参数为String时："></a>当传人参数为String时：</h2><p>测试代码如下：</p>
+<img src="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/code02.png" class="">
+
+<p>如结果所示在方法执行时str数组的确变成了大写，即”HELLO”，但是在执行完方法后的输出时str又变回了小写,即”hello”。</p>
+<p>其原因是Sting类的存储是通过char[]来实现的，类似于Integer是int的包装类，Float是float的包装类，对包装类的操作实质</p>
+<p>上是对基本数据类型的操作，因此Sting类就像包装类一样，体现出基本数据类型的特征，即退出方法后字符串并没有变化。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>基本数据类型和底层通过基本数据类型实现的String在压栈时方法中修改值时，出栈时值不会改变还是变量初始所在栈位置</p>
+<p>的值。而引用数据类型和对象是在堆内存中进行操作所以修改后退出方法输出的值是修改之后的值。</p>
+
       
 
       
@@ -212,16 +233,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">浅谈java中的Integer和int，以及==和equal的关系</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -241,157 +321,14 @@
 
 
 
-
   
-    <article id="post-浅谈java中的Integer和int，以及-和equal的关系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/">浅谈java中的Integer和int，以及==和equal的关系</a>
-    </h1>
   
 
-        
-        <a href="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/" class="archive-article-date">
-  	<time datetime="2019-11-05T13:58:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="从一个Integer和Int的例子开始："><a href="#从一个Integer和Int的例子开始：" class="headerlink" title="从一个Integer和Int的例子开始："></a>从一个Integer和Int的例子开始：</h2><p>​    首先看如下的测试代码及输出结果：</p>
-<img src="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/Integer%E5%8F%8Aint%E7%9A%84%E6%AF%94%E8%BE%83_code01.png" class="">
-
-<p>​    为什么 i == j 的输出结果为 false 而 i.equals(j) 的结果为 true ?</p>
-<p>​    首先需要解释下java中的 == 与 equals 之间的区别。当使用 == 比较时，判断的是两个对象的地址是不是相等，</p>
-<p>即判断两个对象是不是同一个对象（基本数据类型比较的是值，引用数据类型比较的是内存地址）。当使用 equals</p>
-<p>比较时，一般也是判断两个对象是否相等，但它有如下两种情况：</p>
-<p>情况1：类没有覆盖 equals() 方法，则通过 equals() 比较该类的两个对象时，等价于 == 比较这两个对象；</p>
-<p>情况2：类覆盖了 equals() 方法，则通过覆盖的 equals() 方法进行比较输出。一般在我们进行比较覆盖了 equals() 方法</p>
-<p>的两个对象时都是比较其内容是否相等，如果内容相等则返回true（即认为两个对象相等）。</p>
-        
-          <a class="article-more-a" href="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/04/hello-world/">Hello World</a>
-    </h1>
   
 
-        
-        <a href="/2019/11/04/hello-world/" class="archive-article-date">
-  	<time datetime="2019-11-04T13:12:19.063Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/04/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
+
   
 
 
@@ -414,8 +351,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
