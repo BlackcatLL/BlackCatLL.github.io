@@ -6,14 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | BlacakCat的个人博客</title>
+  <title>浅谈java中的Integer和int，以及==和equal的关系 | BlacakCat的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="BlacakCat的个人博客">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;index.html">
+  <meta name="description" content="从一个Integer和Int的例子开始：​    首先看如下的测试代码及输出结果：   ​    为什么 i == j 的输出结果为 false 而 i.equals(j) 的结果为 true ? ​    首先需要解释下java中的 == 与 equals 之间的区别。当使用 == 比较时，判断的是两个对象的地址是不是相等， 即判断两个对象是不是同一个对象（基本数据类型比较的是值，引用数据类型比">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈java中的Integer和int，以及==和equal的关系">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;index.html">
 <meta property="og:site_name" content="BlacakCat的个人博客">
+<meta property="og:description" content="从一个Integer和Int的例子开始：​    首先看如下的测试代码及输出结果：   ​    为什么 i == j 的输出结果为 false 而 i.equals(j) 的结果为 true ? ​    首先需要解释下java中的 == 与 equals 之间的区别。当使用 == 比较时，判断的是两个对象的地址是不是相等， 即判断两个对象是不是同一个对象（基本数据类型比较的是值，引用数据类型比">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;Integer%E5%8F%8Aint%E7%9A%84%E6%AF%94%E8%BE%83_code01.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;jdk_valueOf.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;Integer_valueOf_code.png">
+<meta property="og:updated_time" content="2019-11-05T10:24:13.542Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;Integer%E5%8F%8Aint%E7%9A%84%E6%AF%94%E8%BE%83_code01.png">
   
     <link rel="alternative" href="/atom.xml" title="BlacakCat的个人博客" type="application/atom+xml">
   
@@ -149,36 +157,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-浅谈java中的Integer和int，以及-和equal的关系" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      浅谈java中的Integer和int，以及==和equal的关系
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/" class="archive-article-date">
+
+        
+        <a href="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/" class="archive-article-date">
   	<time datetime="2019-11-05T08:40:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/">浅谈java中的Integer和int，以及==和equal的关系</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="从一个Integer和Int的例子开始："><a href="#从一个Integer和Int的例子开始：" class="headerlink" title="从一个Integer和Int的例子开始："></a>从一个Integer和Int的例子开始：</h2><p>​    首先看如下的测试代码及输出结果：</p>
+<img src="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/Integer%E5%8F%8Aint%E7%9A%84%E6%AF%94%E8%BE%83_code01.png" class="">
 
-        <div class="article-info info-on-right">
-          
+<p>​    为什么 i == j 的输出结果为 false 而 i.equals(j) 的结果为 true ?</p>
+<p>​    首先需要解释下java中的 == 与 equals 之间的区别。当使用 == 比较时，判断的是两个对象的地址是不是相等，</p>
+<p>即判断两个对象是不是同一个对象（基本数据类型比较的是值，引用数据类型比较的是内存地址）。当使用 equals</p>
+<p>比较时，一般也是判断两个对象是否相等，但它有如下两种情况：</p>
+<p>情况1：类没有覆盖 equals() 方法，则通过 equals() 比较该类的两个对象时，等价于 == 比较这两个对象；</p>
+<p>情况2：类覆盖了 equals() 方法，则通过覆盖的 equals() 方法进行比较输出。一般在我们进行比较覆盖了 equals() 方法</p>
+<p>的两个对象时都是比较其内容是否相等，如果内容相等则返回true（即认为两个对象相等）。</p>
+<a id="more"></a>
+
+<p>对情况2还有2点说明：</p>
+<p>①.String中的 equals() 方法使被重写过得，所以 Object 的 equals() 是比较对象的物理地址，而String 的 equals() 方法</p>
+<p>比较的是对象的值；</p>
+<p>②.当创建String类型的对象时，java 虚拟机会在常量池中查找有没有已经存在的值和将要创建的值相等的对象，如果有</p>
+<p>就把它赋给当前引用，如果没有就在常量池中新建一个String对象。</p>
+<p>​    回到我们的主题，当理解了以上对于 == 和 equals() 方法的解释时，我们就能够理解为什么输出的结果不同了。因为</p>
+<p> Integer j 变量指向的是java常量池中的对象，而 new Integer() 的变量指向堆中新建的对象，两种在内存中的地址不同,所以</p>
+<p>输出为 false。而使用  equals() 方法比较时比较的是 i 和 j的内容，即这两个数字是不是相等所以输出为 true。</p>
+<p>​    那为什么 j==k 的输出结果为 true呢？这其中涉及了 java 的自动装箱和拆箱。这里稍微解释下这两个概念。</p>
+<p>​    装箱：将基本数据类型用它们的引用类型包装起来；</p>
+<p>​    拆箱：将包装类型转换为基本数据类型。</p>
+<p>​    所以当包装类 Integer 和基本数据类型 int 比较时，java会自动拆包装为 int ，然后再进行比较，实际就是两个 int 变量</p>
+<p>的比较，即比较它们的值。</p>
+<p>​    那么 l == m 的比较结果为什么输出结果为 false 呢？其中又涉及到了 java 缓存的方面的内容，因为 Integer l = 128</p>
+<p>在编译时，会翻译为 Integer l = Integer.valueOf(128)。我们可以通过jdk查看对 valueOf 的定义：</p>
+<p>​    <img src="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/jdk_valueOf.png" class=""></p>
+<p>​    同时可以查看java对于Integer类型的 valueOf 的定义：</p>
+<p>​    <img src="/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/Integer_valueOf_code.png" class=""></p>
+<p>​    通过以上信息可以知道 java 对于-128 到 127之间的数会进行缓存而产生更好的空间和时间性能，即 Integer i = 127 时，会</p>
+<p>将127进行缓存，下次再写Integer j = 127时，就会直接从缓存中取，就不会new了。而超出这个范围时就不能从缓存中获取，</p>
+<p>需要重新 new ，所以 l 和 m 通过 == 比较时所获得的结果为 false。而当 l 与 n 通过 == 比较时，java会对 l 进行自动拆箱，</p>
+<p>实际是两个 int 类型的比较，即比较的是 l 和 n 的两个数字是否相等，即输出为 true 。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>以上的内容涉及到了 java 的 基本数据类型 int 和包装类 Integer 的区别，java 的自动拆箱，== 与 equals() 的区别，java的缓存。</p>
+<p>通过代码实践，多种情况分析及资料查询，就可以轻松理清楚其中各个 java 知识点的关系。</p>
+<p>​    </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -190,84 +233,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/05/%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/" class="archive-article-date">
-  	<time datetime="2019-11-05T05:03:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">成员变量传入方法的几种不同情况的不同输出</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/">成员变量传入方法的几种不同情况的不同输出</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/04/hello-world/" class="archive-article-date">
-  	<time datetime="2019-11-04T13:12:19.063Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/04/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -290,8 +355,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
