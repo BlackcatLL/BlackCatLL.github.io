@@ -37,53 +37,39 @@
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
-      
-<div class="overlay" style="background: #4d4d4d"></div>
+      <% var defaultBg = '#4d4d4d'; %>
+<div class="overlay" style="background: <%= theme.style && theme.style.header ? theme.style.header : defaultBg %>"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<a href="https://blackcatll.github.io" target="_blank" rel="noopener" class="profilepic">
-			<img src="/img/dio.png" class="js-avatar">
+		<a href="<%=theme.root%>" class="profilepic">
+			<img src="<%=theme.avatar%>" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="https://blackcatll.github.io" target="_blank" rel="noopener">BlackCat</a></h1>
+		  <h1 class="header-author"><a href="<%=theme.root%>"><%=theme.author%></a></h1>
 		</hgroup>
-		
+		<% if (theme.subtitle){ %>
+		<p class="header-subtitle"><%=theme.subtitle%></p>
+		<%}%>
 
 		<nav class="header-menu">
 			<ul>
-			
-				<li><a href="https://blackcatll.github.io/" target="_blank" rel="noopener">主页</a></li>
-	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
-	        
+			<% for (var i in theme.menu){ %>
+				<li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
+	        <%}%>
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
-    		
-    			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)" target="_blank" rel="noopener">所有文章</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)" target="_blank" rel="noopener">友链</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)" target="_blank" rel="noopener">关于我</a>
-    			
-            
+    		<% for (var i in theme.smart_menu){ %>
+    			<% if(theme.smart_menu[i]){ %>
+    			<a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)" target="_blank" rel="noopener"><%= theme.smart_menu[i] %></a>
+    			<% } %>
+            <%}%>
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
-				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
+				<% for (var i in theme.subnav){ %>
+					<a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"><i class="icon-<%= i %>"></i></a>
+		        <%}%>
 			</div>
 		</nav>
 	</header>		
@@ -172,8 +158,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>##成员变量传入方法内的及输出的两种情况</p>
-<p>测试代码如下:</p>
-<img src="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/code01.png" class="">
+<p>测试代码如下: </p>
+<img src="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/code.png" class="">
 
 <p>因为x的数据类型为float，所以执行f2方法输出的结果为10.0很容易理解，但是为什么执行f1方法的输出结果不是55.0,</p>
 <p>而是x的初始值4.0呢？</p>
@@ -184,7 +170,7 @@
 <p>通过以上压栈出栈顺序可以知道成员变量x在进入f1方法后的确经过修改变成了55.0，但出栈时由于基础数据类型存储在栈中，</p>
 <p>所以输出的是先进后出的变量初始所在栈位置的值4.0。而f2方法由于是对对象进行操作，所以输出的是修改后的值。</p>
 <p>##那么如果传入方法的是数组呢？</p>
-<p>测试代码如下：</p>
+<p>测试代码如下： </p>
 <img src="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/code01.png" class="">
 
 <p>如结果显示为什么当传入的成员参数为数组时为什么输出的结果又是方法执行之后的呢？</p>
