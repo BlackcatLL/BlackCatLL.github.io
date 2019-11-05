@@ -9,6 +9,7 @@
   <title>浅谈java中的Integer和int，以及==和equal的关系 | BlacakCat的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="从一个Integer和Int的例子开始：​    首先看如下的测试代码及输出结果：   ​    为什么 i == j 的输出结果为 false 而 i.equals(j) 的结果为 true ? ​    首先需要解释下java中的 == 与 equals 之间的区别。当使用 == 比较时，判断的是两个对象的地址是不是相等， 即判断两个对象是不是同一个对象（基本数据类型比较的是值，引用数据类型比">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈java中的Integer和int，以及==和equal的关系">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;index.html">
@@ -18,7 +19,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;Integer%E5%8F%8Aint%E7%9A%84%E6%AF%94%E8%BE%83_code01.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;jdk_valueOf.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;Integer_valueOf_code.png">
-<meta property="og:updated_time" content="2019-11-05T13:59:54.153Z">
+<meta property="og:updated_time" content="2019-11-05T14:53:18.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;05&#x2F;%E6%B5%85%E8%B0%88java%E4%B8%AD%E7%9A%84Integer%E5%92%8Cint%EF%BC%8C%E4%BB%A5%E5%8F%8A-%E5%92%8Cequal%E7%9A%84%E5%85%B3%E7%B3%BB&#x2F;Integer%E5%8F%8Aint%E7%9A%84%E6%AF%94%E8%BE%83_code01.png">
   
@@ -44,55 +45,39 @@
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
-      
-<div class="overlay" style="background: #4d4d4d"></div>
+      <% var defaultBg = '#4d4d4d'; %>
+<div class="overlay" style="background: <%= theme.style && theme.style.header ? theme.style.header : defaultBg %>"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<a href="https://blackcatll.github.io" target="_blank" rel="noopener" class="profilepic">
-			<img src="/img/dio.png" class="js-avatar">
+		<a href="<%=theme.root%>" class="profilepic">
+			<img src="<%=theme.avatar%>" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="https://blackcatll.github.io" target="_blank" rel="noopener">BlackCat</a></h1>
+		  <h1 class="header-author"><a href="<%=theme.root%>"><%=theme.author%></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">Maker &amp; Developer</p>
-		
+		<% if (theme.subtitle){ %>
+		<p class="header-subtitle"><%=theme.subtitle%></p>
+		<%}%>
 
 		<nav class="header-menu">
 			<ul>
-			
-				<li><a href="https://blackcatll.github.io/" target="_blank" rel="noopener">主页</a></li>
-	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
-	        
+			<% for (var i in theme.menu){ %>
+				<li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
+	        <%}%>
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
-    		
-    			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)" target="_blank" rel="noopener">所有文章</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)" target="_blank" rel="noopener">友链</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)" target="_blank" rel="noopener">关于我</a>
-    			
-            
+    		<% for (var i in theme.smart_menu){ %>
+    			<% if(theme.smart_menu[i]){ %>
+    			<a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)" target="_blank" rel="noopener"><%= theme.smart_menu[i] %></a>
+    			<% } %>
+            <%}%>
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
-				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
+				<% for (var i in theme.subnav){ %>
+					<a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"><i class="icon-<%= i %>"></i></a>
+		        <%}%>
 			</div>
 		</nav>
 	</header>		
@@ -225,6 +210,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
