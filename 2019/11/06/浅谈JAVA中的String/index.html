@@ -27,7 +27,8 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;06&#x2F;%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String&#x2F;String_08.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;06&#x2F;%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String&#x2F;String_09.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;06&#x2F;%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String&#x2F;String_10.png">
-<meta property="og:updated_time" content="2019-11-06T04:55:58.614Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;06&#x2F;%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String&#x2F;String_11.png">
+<meta property="og:updated_time" content="2019-11-06T05:08:11.094Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;06&#x2F;%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String&#x2F;JDK_String01.png">
   
@@ -53,39 +54,55 @@
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
-      <% var defaultBg = '#4d4d4d'; %>
-<div class="overlay" style="background: <%= theme.style && theme.style.header ? theme.style.header : defaultBg %>"></div>
+      
+<div class="overlay" style="background: #4d4d4d"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<a href="<%=theme.root%>" class="profilepic">
-			<img src="<%=theme.avatar%>" class="js-avatar">
+		<a href="https://blackcatll.github.io" target="_blank" rel="noopener" class="profilepic">
+			<img src="/img/dio.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="<%=theme.root%>"><%=theme.author%></a></h1>
+		  <h1 class="header-author"><a href="https://blackcatll.github.io" target="_blank" rel="noopener">BlackCat</a></h1>
 		</hgroup>
-		<% if (theme.subtitle){ %>
-		<p class="header-subtitle"><%=theme.subtitle%></p>
-		<%}%>
+		
+		<p class="header-subtitle">Maker &amp; Developer</p>
+		
 
 		<nav class="header-menu">
 			<ul>
-			<% for (var i in theme.menu){ %>
-				<li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
-	        <%}%>
+			
+				<li><a href="https://blackcatll.github.io/" target="_blank" rel="noopener">主页</a></li>
+	        
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
-    		<% for (var i in theme.smart_menu){ %>
-    			<% if(theme.smart_menu[i]){ %>
-    			<a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)" target="_blank" rel="noopener"><%= theme.smart_menu[i] %></a>
-    			<% } %>
-            <%}%>
+    		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)" target="_blank" rel="noopener">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)" target="_blank" rel="noopener">友链</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)" target="_blank" rel="noopener">关于我</a>
+    			
+            
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
-				<% for (var i in theme.subnav){ %>
-					<a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"><i class="icon-<%= i %>"></i></a>
-		        <%}%>
+				
+					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+		        
+					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+		        
 			</div>
 		</nav>
 	</header>		
@@ -230,7 +247,10 @@
 <p>​    可以看到 toString() 方法返回的它自身，所以调用 toString() 时可以确定 str已经被改变了，那么为什么直接</p>
 <p>输出str却得到的是未改变的结果呢？因为JDK编译时对 final 类型的对象有优化，如果是 String、int、long、double、</p>
 <p>float等，直接引用这种final类型的则会变成引用对应的值而不是引用对象。所以在 str 前加了final 时，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(&quot;str = &quot;+ str) 这句编译后会变成 System.out.println(&quot;str = &quot;+ &quot;Hello World)，</span><br><span class="line">也就是在编译后已经不再是引用 str了，所以即使原值已经改变而输出不会改变。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 结语</span><br><span class="line">	本文只是一些对于 String 类的一些思考和总结，内容也不够深入，原理解析也不够透彻。String类作为平常编码中</span><br><span class="line">使用频率较高的一个，还是很有深入研究和探讨的意义。</span><br><span class="line"></span><br><span class="line">## 值得一提：</span><br><span class="line">	在JDK1.9 中 String 的 value 被设计成 byte[] , 不再是 char[] 了。如果在1.9级以上版本执行</span><br><span class="line">	  char[] value = (char[])valueFieldOfString.get(str);</span><br><span class="line">	 会得到如下报错：</span><br><span class="line">	 &#123;% asset_img String_11.png %&#125;</span><br><span class="line">	 报错原因就是强转 char[] 失败，上所贴测试代码需要在 JDK1.8 及以下版本才能运行成功。</span><br></pre></td></tr></table></figure>
+<p>System.out.println(“str = “+ str) 这句编译后会变成 System.out.println(“str = “+ “Hello World)，<br>也就是在编译后已经不再是引用 str了，所以即使原值已经改变而输出不会改变。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>​    本文只是一些对于 String 类的一些思考和总结，内容也不够深入，原理解析也不够透彻。String类作为平常编码中<br>使用频率较高的一个，还是很有深入研究和探讨的意义。</p>
+<h2 id="值得一提："><a href="#值得一提：" class="headerlink" title="值得一提："></a>值得一提：</h2><p>​    在JDK1.9 中 String 的 value 被设计成 byte[] , 不再是 char[] 了。如果在1.9级以上版本执行<br>​      char[] value = (char[])valueFieldOfString.get(str);<br>​     会得到如下报错：<br>​     <img src="/2019/11/06/%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String/String_11.png" class=""><br>​     报错原因就是强转 char[] 失败，上所贴测试代码需要在 JDK1.8 及以下版本才能运行成功。</p>
+
       
 
       
