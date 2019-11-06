@@ -141,6 +141,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-浅谈JAVA中的String" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/06/%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String/">浅谈JAVA中的String</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/06/%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String/" class="archive-article-date">
+  	<time datetime="2019-11-06T02:34:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="String的在JDK1-8文档中的介绍"><a href="#String的在JDK1-8文档中的介绍" class="headerlink" title="String的在JDK1.8文档中的介绍"></a>String的在JDK1.8文档中的介绍</h2><p>​    首先打开jdk1.8的文档，截取如下信息：</p>
+<p>​    <img src="/2019/11/06/%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String/JDK_String01.png" class=""></p>
+<p>​    <img src="/2019/11/06/%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String/JDK_String02.png" class=""></p>
+<p>​    由JDK1.8文档中的信息可以知道 String 被 final 关键字修饰，继承了 Object类，同时继承了3个接口 Serializable ，</p>
+<p> Comparable<String>和CharSequence 。并且可以得知字符串String是不可变的，字符串缓存区支持可变字符串，</p>
+<p>String对象可以被共享。而且由文档中所给出的代码也可以得知 String 的底层是通过 Char[] 来存储的。</p>
+<h2 id="什么是不可变？"><a href="#什么是不可变？" class="headerlink" title="什么是不可变？"></a>什么是不可变？</h2><p>​    由于 String 类被 final 修饰，无子类，不可被复写，对String类的任何改变，都会返回一个新的 String 类对象，</p>
+<p>那么什么是不可变呢？</p>
+        
+          <a class="article-more-a" href="/2019/11/06/%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">java,String</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/06/%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-成员变量传入方法的几种不同情况的不同输出" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -481,6 +564,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">java,String</a>
               </li>
             
             <div class="clearfix"></div>
