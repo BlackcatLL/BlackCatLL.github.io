@@ -6,14 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>浅谈JAVA中的String | BlacakCat的个人博客</title>
+  <title>浅谈JAVA中的String | BlackCat的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="String的在JDK1.8文档中的介绍​    首先打开jdk1.8的文档，截取如下信息： ​     ​     ​    由JDK1.8文档中的信息可以知道 String 被 final 关键字修饰，继承了 Object类，同时继承了3个接口 Serializable ，  Comparable和CharSequence 。并且可以得知字符串String是不可变的，字符串缓存区支持可变字符串">
 <meta name="keywords" content="java,String">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈JAVA中的String">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;06&#x2F;%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String&#x2F;index.html">
-<meta property="og:site_name" content="BlacakCat的个人博客">
+<meta property="og:site_name" content="BlackCat的个人博客">
 <meta property="og:description" content="String的在JDK1.8文档中的介绍​    首先打开jdk1.8的文档，截取如下信息： ​     ​     ​    由JDK1.8文档中的信息可以知道 String 被 final 关键字修饰，继承了 Object类，同时继承了3个接口 Serializable ，  Comparable和CharSequence 。并且可以得知字符串String是不可变的，字符串缓存区支持可变字符串">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;06&#x2F;%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String&#x2F;JDK_String01.png">
@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;06&#x2F;%E6%B5%85%E8%B0%88JAVA%E4%B8%AD%E7%9A%84String&#x2F;JDK_String01.png">
   
-    <link rel="alternative" href="/atom.xml" title="BlacakCat的个人博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="BlackCat的个人博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -54,55 +54,39 @@
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
-      
-<div class="overlay" style="background: #4d4d4d"></div>
+      <% var defaultBg = '#4d4d4d'; %>
+<div class="overlay" style="background: <%= theme.style && theme.style.header ? theme.style.header : defaultBg %>"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
-		<a href="https://blackcatll.github.io" target="_blank" rel="noopener" class="profilepic">
-			<img src="/img/dio.png" class="js-avatar">
+		<a href="<%=theme.root%>" class="profilepic">
+			<img src="<%=theme.avatar%>" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="https://blackcatll.github.io" target="_blank" rel="noopener">BlackCat</a></h1>
+		  <h1 class="header-author"><a href="<%=theme.root%>"><%=theme.author%></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">Maker &amp; Developer</p>
-		
+		<% if (theme.subtitle){ %>
+		<p class="header-subtitle"><%=theme.subtitle%></p>
+		<%}%>
 
 		<nav class="header-menu">
 			<ul>
-			
-				<li><a href="https://blackcatll.github.io/" target="_blank" rel="noopener">主页</a></li>
-	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
-	        
+			<% for (var i in theme.menu){ %>
+				<li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
+	        <%}%>
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
-    		
-    			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)" target="_blank" rel="noopener">所有文章</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)" target="_blank" rel="noopener">友链</a>
-    			
-            
-    			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)" target="_blank" rel="noopener">关于我</a>
-    			
-            
+    		<% for (var i in theme.smart_menu){ %>
+    			<% if(theme.smart_menu[i]){ %>
+    			<a q-on="click: openSlider(e, '<%-i%>')" href="javascript:void(0)" target="_blank" rel="noopener"><%= theme.smart_menu[i] %></a>
+    			<% } %>
+            <%}%>
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
-				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
+				<% for (var i in theme.subnav){ %>
+					<a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"><i class="icon-<%= i %>"></i></a>
+		        <%}%>
 			</div>
 		</nav>
 	</header>		
@@ -333,6 +317,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/11/08/%E6%B5%85%E8%B0%88JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          浅谈JAVA多线程
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/11/05/%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E4%BC%A0%E5%85%A5%E6%96%B9%E6%B3%95%E7%9A%84%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E6%83%85%E5%86%B5%E7%9A%84%E4%B8%8D%E5%90%8C%E8%BE%93%E5%87%BA/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">成员变量传入方法的几种不同情况的不同输出</div>
@@ -461,11 +454,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">java,String</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">java,String</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">JAVA 多线程</a>
               </li>
             
             <div class="clearfix"></div>
